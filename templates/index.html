@@ -6,11 +6,20 @@
 
 <h2>Get Factorial</h2>
 
-<form action="/factorial">   # 이 라우터 실행
+
+<!-- # 박정한이 바꿈 -->
+
+<form action="/product" method="post">   <!-- POST 메소드를 사용하도록 변경 -->
+  <label for="number">Number:</label><br>
+  <input type="text" id="number" name="number"><br>   <!-- 숫자를 받는 부분 -->
+  <input type="submit" value="Submit">
+</form> 
+
+<!-- <form action="/product">   # 이 라우터 실행
   <label for="number">Number:</label><br>
   <input type="text" id="number" name="number"><br>   #숫자를 받는 부분
   <input type="submit" value="Submit">
-</form> 
+</form>  -->
 
 </body>
 </html>
