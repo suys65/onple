@@ -7,12 +7,12 @@ pkl_path = 'C:\onple\onple\data\input_data.pkl'
 with open(pkl_path, 'rb') as f:
     input = pickle.load(f)
 input = input.drop('주문번호', axis=1)
-input = input.drop('1+1', axis=1)
+#input = input.drop('1+1', axis=1)
 input = input.fillna(False)
 
 # 한 행의 모든 값이 nan일 때 그 행 삭제
 input = input.dropna(how='all')
-print(input)
+#print(input)
 # 데이터 프레임은 원핫인코딩 형태여야 합니다.
 df=input
 df = df.astype(bool)

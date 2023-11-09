@@ -1,12 +1,3 @@
-# algorithm.py
-
-def factorial(n):   #숫자가 들어가는 부분
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n-1)
-
-import pickle
 
 import pandas as pd
 import pickle
@@ -27,7 +18,7 @@ def get_recommendations(item):
     with open('C:\onple\onple\data\product.pkl', 'rb') as f:
         products = pd.read_pickle(f)
     recommended_categoryi = recommended_category.apply(lambda x: next(iter(x)) if len(x) > 0 else None)
-    #print(recommended_categoryi)
+    print(recommended_categoryi)
     # Filter the products that belong to the recommended category
     category_products = products[products['중 카테고리'] == recommended_categoryi.iloc[0]]
     
@@ -35,4 +26,4 @@ def get_recommendations(item):
     recommended_product = category_products.sort_values('주문량', ascending=False).iloc[0]
 
     return recommended_product
-print(get_recommendations('인테리어식물'))
+#print(get_recommendations('인테리어식물'))
