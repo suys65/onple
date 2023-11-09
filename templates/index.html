@@ -1,25 +1,14 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html>
 <body>
 
-<h2>shopping cart</h2>
+<h2>Choose a product to add to your cart.</h2>
 
-
-<!-- # 박정한이 바꿈 -->
-
-<form action="/product" method="post">   <!-- POST 메소드를 사용하도록 변경 -->
-  <label for="number">Number:</label><br>
-  <input type="text" id="number" name="number"><br>   <!-- 숫자를 받는 부분 -->
-  <input type="submit" value="Submit">
-</form> 
-
-<!-- <form action="/product">   # 이 라우터 실행
-  <label for="number">Number:</label><br>
-  <input type="text" id="number" name="number"><br>   #숫자를 받는 부분
-  <input type="submit" value="Submit">
-</form>  -->
+<form action="/product" method="post">
+  {% for product in products %}
+    <button type="submit" name="product_code" value="{{ product['product_code'] }}">{{ product['product_name'] }}</button><br>
+  {% endfor %}
+</form>
 
 </body>
 </html>
