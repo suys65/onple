@@ -4,13 +4,14 @@
     <title>Product Page</title>
 </head>
 <body>
-    <h1>{{ product.product_name }}</h1>
-    <p>Category: {{ product.category }}</p>
-    <p>Price: {{ product.price }}</p>
+    <h1>shopping cart</h1>
+    <h2></h1>Product: {{ product['상품명'].values }}<h2></h1>
+    <p>Category: {{ product['중 카테고리'].values }}</p>
+    <p>Price: {{ product['상품판매가'].values }}</p>
 
-    <h2>Recommended Product</h2>
-    <h3>{{ recommendations.product_name }}</h3>
-    <p>Category: {{ recommendations.category }}</p>
-    <p>Price: {{ recommendations.price }}</p>
+    <h1>Recommended Product</h1>
+    <h3>{{ recommendations['상품명']}}</h3>
+    <p>Category: {{ recommendations['중 카테고리'] }}</p>
+    <p>Price: {{ recommendations['상품판매가'] }}</p>
 </body>
 </html>

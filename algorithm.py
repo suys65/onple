@@ -35,4 +35,4 @@ def get_recommendations(item):
     recommended_product = category_products.sort_values('주문량', ascending=False).iloc[0]
 
     return recommended_product
-print(get_recommendations('인테리어식물'))
+#print(get_recommendations('인테리어식물'))
