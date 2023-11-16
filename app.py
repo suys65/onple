@@ -8,7 +8,7 @@ import pickle
 app = Flask(__name__)
 
 # Load product data
-with open('C:\onple\onple\data\product.pkl', 'rb') as f:
+with open('data\product.pkl', 'rb') as f:
     products = pd.read_pickle(f)
 #print(products[products['상품코드'] == "G0001226774"]['중 카테고리'].values[0])
 
@@ -41,7 +41,7 @@ def product_form():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     # 상품 DataFrame을 불러옵니다.
-    products = pd.read_pickle('C:\onple\onple\data\product.pkl')
+    products = pd.read_pickle('data\product.pkl')
     products.rename(columns={'상품코드': 'product_code', '상품명': 'product_name'}, inplace=True)
 
     # DataFrame에서 랜덤으로 상품을 선택합니다.

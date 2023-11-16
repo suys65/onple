@@ -4,7 +4,7 @@ import pickle
 
 def get_recommendations(item):
     # Load the association rules
-    with open('C:\onple\onple\data\ssociation_rules.pkl', 'rb') as f:
+    with open('data\ssociation_rules.pkl', 'rb') as f:
         rules = pd.read_pickle(f)
     
     # Find the recommended category
@@ -15,7 +15,7 @@ def get_recommendations(item):
     recommended_category = rules[rules['antecedents_items'] == item]['consequents']
 
     # Load the product data
-    with open('C:\onple\onple\data\product.pkl', 'rb') as f:
+    with open('data\product.pkl', 'rb') as f:
         products = pd.read_pickle(f)
     recommended_categoryi = recommended_category.apply(lambda x: next(iter(x)) if len(x) > 0 else None)
     print(recommended_categoryi)
