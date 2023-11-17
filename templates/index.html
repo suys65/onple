@@ -29,12 +29,16 @@
     button:hover {
       background-color: #5bbb93;
     }
+    button img {
+      width: 100%;  /* 버튼의 너비에 맞게 이미지 크기 조절 */
+      height: auto;  /* 이미지의 비율을 유지 */
+    }
   </style>
 </head>
 <body>
-
+<img src="/templates/image/onple_logo.png" alt="onple">
 <h2>Choose a product to add to your cart.</h2>
-
+<img src="/templates/image/KakaoTalk_20231116_181119667_05.png" alt="onple">
 <form action="/product" method="post">
   {% for product in products %}
     <button type="submit" name="product_code" value="{{ product['product_code'] }}">{{ product['product_name'] }}</button>

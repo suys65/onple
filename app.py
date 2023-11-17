@@ -4,8 +4,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from algorithm import get_recommendations
 import pandas as pd
 import pickle
+from flask import Flask, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 # Load product data
 with open('data\product.pkl', 'rb') as f:
@@ -50,6 +51,11 @@ def home():
     # selected_products를 HTML 파일에 전달하여 렌더링합니다.
     # 각 행을 사전 형태로 변환합니다.
     return render_template('index.html', products=selected_products.to_dict('records'))
+
+@app.route('/templates/image/<path:path>')
+def send_image(path):
+    return send_from_directory('templates/image', path)
+
 
 if __name__ == "__main__":
     app.run()
