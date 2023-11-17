@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background-color: #2c8357;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      height: 100px;
+    }
+    button:hover {
+      background-color: #5bbb93;
+    }
+  </style>
+</head>
 <body>
 
 <h2>Choose a product to add to your cart.</h2>
 
 <form action="/product" method="post">
   {% for product in products %}
-    <button type="submit" name="product_code" value="{{ product['product_code'] }}">{{ product['product_name'] }}</button><br>
+    <button type="submit" name="product_code" value="{{ product['product_code'] }}">{{ product['product_name'] }}</button>
   {% endfor %}
 </form>
 
