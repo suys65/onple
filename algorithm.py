@@ -20,6 +20,7 @@ def get_recommendations(item):
     recommended_categoryi = recommended_category.apply(lambda x: next(iter(x)) if len(x) > 0 else None)
     print(recommended_categoryi)
     # Filter the products that belong to the recommended category
+    
     category_products = products[products['중 카테고리'] == recommended_categoryi.iloc[0]]
     
     # Find the product with the highest order quantity in the category
