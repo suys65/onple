@@ -11,8 +11,8 @@ app = Flask(__name__, static_url_path='')
 # Load product data
 with open('data\product.pkl', 'rb') as f:
     products = pd.read_pickle(f)
-#print(products[products['상품코드'] == "G0001226774"]['중 카테고리'].values[0])
 
+# 상품 추천하는 라우터
 @app.route('/product/<product_id>', methods=['GET'])
 def product_page(product_id):
     # Check if the product_id exists in the data
@@ -22,12 +22,14 @@ def product_page(product_id):
     # Find the category of the clicked product
     product = products[products['상품코드'] == product_id]  #상품코드
     category = product['중 카테고리'].values[0]      #중 카테고리
-    # print(product)
+    print(product['중 카테고리'])
     # Get recommendations
     recommendations = get_recommendations(category)
-    print(recommendations)
+    #print(recommendations)
     return render_template('product.html', product=product, recommendations=recommendations) # 추천 상품 데이터프레임의 첫 번째 행을 전달합니다.
 
+
+#페이지 넘어가는 라우터 
 @app.route('/product', methods=['POST'])
 def product_form():
     product_id = request.form.get('product_code')  # 'product_code'를 통해 상품 코드를 받습니다.
