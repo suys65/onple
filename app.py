@@ -35,7 +35,7 @@ def cart():
     products.rename(columns={'상품코드': 'product_code', '상품명': 'product_name'}, inplace=True)
 
     # DataFrame에서 랜덤으로 상품을 선택합니다.
-    selected_products = products.sample(3)
+    selected_products = products.sample(1)
 
     # selected_products를 HTML 파일에 전달하여 렌더링합니다.
     # 각 행을 사전 형태로 변환합니다.
@@ -43,7 +43,7 @@ def cart():
     # 장바구니 페이지를 렌더링합니다.
 
 # 장바구니 - 상품 추천하는 라우터
-@app.route('/cart/buy', methods=['GET', 'POST'])
+@app.route('/cart/buy/<product_id>', methods=['GET'])
 def cart_buy(product_id):
     # Check if the product_id exists in the data
     if product_id not in products['상품코드'].values:
@@ -58,7 +58,15 @@ def cart_buy(product_id):
     #print(recommendations)
     return render_template('product.html', product=product, recommendations=recommendations) # 추천 상품 데이터프레임의 첫 번째 행을 전달합니다.
 
+@app.route('/cart/buy', methods=['POST'])
+def buy_form():
+    product_id = request.form.get('product_code')  # 'product_code'를 통해 상품 코드를 받습니다.
 
+    # Check if the product_id exists in the data
+    if product_id not in products['상품코드'].values:
+        return "The product does not exist.", 404
+
+    return redirect(url_for('product_page', product_id=product_id))
 
 #페이지 넘어가는 라우터 
 @app.route('/product', methods=['POST'])

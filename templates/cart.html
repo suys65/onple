@@ -72,14 +72,15 @@
 </head>
 <body>
 <img class="centered-image" src="/templates/image/onple_logo.png" alt="onple">
-
-<img src="/templates/image/장바구니.png" alt="onple">
-<a href="/buy" class="cart-button">구매하기</a>
 <form action="/product" method="post">
   {% for product in products %}
-    <button type="submit" name="product_code" value="{{ product['product_code'] }}">{{ product['product_name'] }}</button>
+  <button type="submit" name="product_code" value="{{ product['product_code'] }}">전체구매</button>
+
   {% endfor %}
 </form>
+<img src="/templates/image/장바구니.png" alt="onple">
+
+
 
 </body>
 </html>
