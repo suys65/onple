@@ -27,23 +27,13 @@
     </style>
 </head>
 <body>
-    <div class="product-card">
-        <img src="/templates/image/상품추천.png" alt="onple">
-        <div class="info">
-            <h1>Shopping Cart</h1>
-            <h2>Product: {{ product['상품명'].values }}</h2>
-            <p>Category: {{ product['중 카테고리'].values }}</p>
-            <p>Price: {{ product['상품판매가'].values }}</p>
-        </div>
+    <div>
+        <img src="/templates/image/상품추천.png" alt="onple" style="width:100vw">
+        <h2>다른 고객이 함께 구매한 상품: {{ recommendations['상품명'] }}</h2>
+        <p>Category: {{ recommendations['중 카테고리'] }}</p>
+        <p>Price: {{ recommendations['상품판매가'] }}</p>
     </div>
-
-    <div class="product-card">
-        <img src="/templates/image/상품추천.png" alt="onple">
-        <div class="info">
-            <h2>Product: {{ recommendations['상품명'] }}</h2>
-            <p>Category: {{ recommendations['중 카테고리'] }}</p>
-            <p>Price: {{ recommendations['상품판매가'] }}</p>
-        </div>
-    </div>
+    
+    
 </body>
 </html>

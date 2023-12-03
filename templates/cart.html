@@ -32,31 +32,9 @@
       height: 100px;
     }
     button:hover {
-      background-color: #5bbb93;
+      background-color: #8a71442d;
     }
-    button img {
-      width: 100%;  /* 버튼의 너비에 맞게 이미지 크기 조절 */
-      height: auto;  /* 이미지의 비율을 유지 */
-    }
-    .cart-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #2c8357;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      z-index: 9999;  /* 추가된 속성 */
-    }
-
-    .cart-button:hover {
-      background-color: #5bbb93;
-    }
+  
     .product-list {
       position: relative;
     }
@@ -65,22 +43,28 @@
     }
     .product-list button {
       position: absolute;
-      top: 50%;  /* 버튼의 위치를 조정하세요 */
-      left: 50%;  /* 버튼의 위치를 조정하세요 */
+      top: 59.8%;  /* 버튼의 위치를 조정하세요 */
+      left: 59%;  /* 버튼의 위치를 조정하세요 */
     }
+    .product-btn {
+      width: 203px; 
+      height: 59px; 
+      background-color: transparent; /* 버튼 배경색을 투명하게 설정 */
+      color: transparent; /* 글자색을 검정색으로 설정 */
+    }
+
   </style>
 </head>
 <body>
-<img class="centered-image" src="/templates/image/onple_logo.png" alt="onple">
-<form action="/product" method="post">
-  {% for product in products %}
-  <button type="submit" name="product_code" value="{{ product['product_code'] }}">전체구매</button>
 
-  {% endfor %}
-</form>
-<img src="/templates/image/장바구니.png" alt="onple">
-
-
+<div class="product-list">
+  <img src="/templates/image/장바구니.png" alt="onple">
+  <form action="/product" method="post">
+    {% for product in products %}
+      <button class="product-btn" type="submit" name="product_code" value="{{ product['product_code'] }}">  </button>
+    {% endfor %}
+  </form>
+</div>
 
 </body>
 </html>
