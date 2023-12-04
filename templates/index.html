@@ -59,71 +59,33 @@
     }
     .product-list {
       position: relative;
+      width: 100%;
+      height: 100%;
     }
     .product-list img {
       width: 100%;
-    }
-    .product-list button {
-      position: absolute;
-      top: 50%;  /* 버튼의 위치를 조정하세요 */
-      left: 50%;  /* 버튼의 위치를 조정하세요 */
+      height: 100%;
     }
     .product-btn {
-      width: 190px;  /* 버튼의 너비를 설정하세요 */
-      height: 180px;  /* 버튼의 높이를 설정하세요 */
+      position: absolute;
+      width: 208px;
+      height: 212px;
     }
 
-    .product-btn:nth-of-type(1) {
-      top: 20%;
-      left: 20%;
-    }
+    /* 버튼들을 5개씩 두 그룹으로 나누어 배치 */
+    .product-btn:nth-child(-n+5) { top: 14.5%; }
+    .product-btn:nth-child(n+6) { top: 48.5%; }
 
-    .product-btn:nth-of-type(2) {
-      top: 20%;
-      left: 35%;
-    }
-
-    .product-btn:nth-of-type(3) {
-      top: 20%;
-      left: 40%;
-    }
-
-    .product-btn:nth-of-type(4) {
-      top: 20%;
-      left: 50%;
-    }
-
-    .product-btn:nth-of-type(5) {
-      top: 20%;
-      left: 60%;
-    }
-
-    .product-btn:nth-of-type(6) {
-      top: 50%;
-      left: 10%;
-    }
-
-    .product-btn:nth-of-type(7) {
-      top: 50%;
-      left: 30%;
-    }
-
-    .product-btn:nth-of-type(8) {
-      top: 50%;
-      left: 50%;
-    }
-
-    .product-btn:nth-of-type(9) {
-      top: 50%;
-      left: 70%;
-    }
-
-    .product-btn:nth-of-type(10) {
-      top: 50%;
-      left: 90%;
-    }
+    /* 각 버튼의 가로 위치를 조정 */
+    .product-btn:nth-child(5n+1) { left: 18.5%; }
+    .product-btn:nth-child(5n+2) { left: 31.25%; }
+    .product-btn:nth-child(5n+3) { left: 44.0%; }
+    .product-btn:nth-child(5n+4) { left: 56.75%; }
+    .product-btn:nth-child(5n)   { left: 69.5%; }
 
   </style>
+
+
 </head>
 <body>
 <img class="centered-image" src="/templates/image/onple_logo.png" alt="onple">
