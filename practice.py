@@ -29,7 +29,7 @@ pkl_path = 'data\ssociation_rules.pkl'  # 여기에 저장하려는 pickle 파�
 with open(pkl_path, 'wb') as f:
     pickle.dump(rules, f)
 # 결과를 출력합니다.
-#print(rules[['antecedents', 'consequents', 'support', 'confidence']])
+print(rules[['antecedents', 'consequents', 'support', 'confidence']])
 
 import pickle
 import pandas as pd
