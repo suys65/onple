@@ -22,7 +22,9 @@ frequent_itemsets = apriori(df, min_support=0.00001, use_colnames=True)
 
 # 신뢰도(confidence)가 0.5 이상인 연관 규칙을 찾습니다.
 # rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.2)
-rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.001)
+rules = association_rules(frequent_itemsets, metric="support", min_threshold=0.001)
+rules = rules.sort_values(by='confidence', ascending=False)
+
 import pickle
 import pandas as pd
 pkl_path = 'data\ssociation_rules.pkl'  # 여기에 저장하려는 pickle 파일의 경로를 입력하세요
@@ -31,8 +33,7 @@ with open(pkl_path, 'wb') as f:
 # 결과를 출력합니다.
 print(rules[['antecedents', 'consequents', 'support', 'confidence']])
 
-import pickle
-import pandas as pd
+
 pkl_path = 'data/ssociation_rules.pkl'  # '\\' 대신 '/'를 사용
 with open(pkl_path, 'wb') as f:
     pickle.dump(rules, f)
