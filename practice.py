@@ -1,39 +1,42 @@
+# 필요한 모듈 임포트
 import pickle
 import pandas as pd
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
+
+# pickle 파일 경로 설정
 pkl_path = 'data\input_data.pkl'
 
+# pickle 파일 불러오기
 with open(pkl_path, 'rb') as f:
     input = pickle.load(f)
+
+# '주문번호' 열 제거
 input = input.drop('주문번호', axis=1)
-#input = input.drop('1+1', axis=1)
+
+# 결측값을 False로 채우기
 input = input.fillna(False)
 
-# 한 행의 모든 값이 nan일 때 그 행 삭제
+# 모든 열이 비어있는 행 제거
 input = input.dropna(how='all')
-#print(input)
-# 데이터 프레임은 원핫인코딩 형태여야 합니다.
+
+# 데이터프레임 복사 후 타입을 불리언으로 변환
 df=input
 df = df.astype(bool)
 
-# 아이템 집합의 최소 지지도를 0.01로 설정하고, Apriori 알고리즘을 적용합니다.
+# Apriori 알고리즘을 사용해 빈번한 아이템 집합 찾기 (최소 지지도: 0.00001)
 frequent_itemsets = apriori(df, min_support=0.00001, use_colnames=True)
 
-# 신뢰도(confidence)가 0.5 이상인 연관 규칙을 찾습니다.
-# rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.2)
+# 연관 규칙 찾기 (최소 지지도: 0.001)
 rules = association_rules(frequent_itemsets, metric="support", min_threshold=0.001)
+
+# 'confidence' 기준으로 내림차순 정렬
 rules = rules.sort_values(by='confidence', ascending=False)
 
-import pickle
-import pandas as pd
-pkl_path = 'data\ssociation_rules.pkl'  # 여기에 저장하려는 pickle 파일의 경로를 입력하세요
+# 연관 규칙 pickle 파일로 저장
+pkl_path = 'data\ssociation_rules.pkl'
 with open(pkl_path, 'wb') as f:
     pickle.dump(rules, f)
-# 결과를 출력합니다.
+
+# 결과 출력
 print(rules[['antecedents', 'consequents', 'support', 'confidence']])
-
-
-pkl_path = 'data/ssociation_rules.pkl'  # '\\' 대신 '/'를 사용
-with open(pkl_path, 'wb') as f:
-    pickle.dump(rules, f)
