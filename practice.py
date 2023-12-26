@@ -4,7 +4,7 @@ import pandas as pd
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
-# pickle 파일 경로 설정
+# pickle 파일 경로 설정 - input 파일 경로
 pkl_path = 'data\input_data.pkl'
 
 # pickle 파일 불러오기
