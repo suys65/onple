@@ -1,8 +1,7 @@
 # onple 코드 사용법
 
 ## 필요한 라이브러리 다운
-다운 방법: ctrl + `을 눌러 TERMINAL을 연 후, pip install (라이브러리명)을 입력한다.(vscode 하단에 terminal에서 'pip install (라이브러리명)' 라고 입력)
-
+다운 방법: ctrl + `을 눌러 TERMINAL을 연 후, pip install (라이브러리명)을 입력한다.  
 - pandas
 - pickle
 - mlxtend
